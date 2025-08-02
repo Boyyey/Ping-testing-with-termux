@@ -1,0 +1,20 @@
+import speedtest
+import datetime
+
+def run_speed_test():
+    st = speedtest.Speedtest()
+    st.get_best_server()
+
+    download_speed = st.download() / 1_000_000  # Convert to Mbps
+    upload_speed = st.upload() / 1_000_000  # Convert to Mbps
+    ping = st.results.ping
+
+    now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+    result = f"{now} - Download: {download_speed:.2f} Mbps | Upload: {upload>
+    print(result)
+
+    with open("speed_log.txt", "a") as log_file:
+        log_file.write(result + "\n")
+
+run_speed_test()
